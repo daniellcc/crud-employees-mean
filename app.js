@@ -11,6 +11,6 @@ app.use(express.json());
 app.use(cors())
 
 // routes
-app.use('/employees', require('./routes/employee.routes'));
+app.use('/employees', require('./server/routes/employee.routes'));
 
 app.listen(port);
