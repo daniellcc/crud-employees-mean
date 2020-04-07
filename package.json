@@ -4,7 +4,7 @@
   "description": "server side stories making app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "start app.js"
   },
   "author": "Daniel Cedeño",
   "license": "ISC",
