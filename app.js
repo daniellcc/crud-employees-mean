@@ -10,7 +10,6 @@ const port = process.env.PORT || 8080;
 
 // middlewares
 app.use(express.json());
-app.use(cors());
 if(process.env.NODE_ENV === 'production') {
 	app.use(express.static('dist/crud-employees'));
 }
