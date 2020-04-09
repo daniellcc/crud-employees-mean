@@ -16,7 +16,7 @@ app.use(cors());
 // routes
 app.use('/employees',
   require('./server/routes/employee.routes'),
-  express.static('dist/crud-employees')
+  express.static('./dist/crud-employees')
 );
 
 app.listen(port);
