@@ -11,9 +11,8 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(express.json());
 app.use(cors());
-app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, './dist/crud-employees./index.html'))
-});
+
+app.use('/employees', express.static('dist/crud-employees'))
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
