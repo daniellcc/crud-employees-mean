@@ -1,13 +1,11 @@
-#main-card{
+#main-card {
 	border-top-right-radius: 18px !important;
 	border-top-left-radius: 18px !important;
-	box-shadow: 0px -3px 3px -3px rgba(0,0,0,0.75);
+	box-shadow: 0px -1px 3px -1px rgba(0,0,0,0.75) !important;
 }
 
-@media ( min-width: 768px ) {
+@media (min-width: 768px) {
 	#main-card {
-		box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.75);
-		margin-top: 2em;
+		box-shadow: 0px 2px 8px -3px rgba(0,0,0,0.75) !important;
 	}
 }
-
