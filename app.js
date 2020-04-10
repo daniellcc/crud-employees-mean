@@ -12,7 +12,10 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(express.json());
 app.use(cors());
-app.use(path.join(__dirname + '/dist/crud-employees'))
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('dist'));
+}
+
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
