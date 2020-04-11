@@ -9,8 +9,11 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
-	app.use( express.static(path.join(__dirname, 'dist/crud-employees')));
-	app.use('/', express.static(path.join(__dirname, 'dist/crud-employees')));
+	app.get('/', (req, res) => {
+		res.sendFile(__dirname + '/dist/view/crud-employees/index.html');
+	});
+	app.use( express.static(path.join(__dirname, 'dist/static')));
+	app.use('/', express.static(path.join(__dirname, 'dist/static')));
 }
 
 // routes
