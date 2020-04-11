@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path')
+const cors = require('cors');
 const { mongoose } = require('./DB');
 
 const app = express();
@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // middlewares
+app.use(cors());
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
 	app.use('/', express.static(__dirname + '/dist'));
