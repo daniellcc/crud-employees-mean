@@ -12,8 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 	app.get('/', (req, res) => {
 		res.sendFile(__dirname + '/dist/view/crud-employees/index.html');
 	});
-	app.use( express.static(path.join(__dirname, 'dist/static')));
-	app.use('/', express.static(path.join(__dirname, 'dist/static')));
+	app.use('/static', express.static(path.join(__dirname, 'dist/static')));
 }
 
 // routes
