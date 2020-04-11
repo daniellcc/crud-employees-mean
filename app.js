@@ -13,7 +13,7 @@ app.get('*', (req, res) => {
 // middlewares
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
-	app.use('/', express.static( 'dist/static'));
+	app.use('/employees', express.static( 'dist/static'));
 }
 
 // routes
