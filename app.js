@@ -9,7 +9,7 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('dist'));
+	app.use('/static', express.static('dist'));
 }
 
 // routes
