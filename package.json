@@ -1,7 +1,7 @@
 {
   "name": "crud-employees",
   "version": "1.0.0",
-  "description": "server side stories making app",
+  "description": "server side crud",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
