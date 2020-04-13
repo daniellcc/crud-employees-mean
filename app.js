@@ -6,7 +6,9 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
-process.env.ENV_NODE = 'production';
+app.get('/', (req,res) => {
+	res.sendFile(__dirname + '/dist/index.html');
+})
 
 // middlewares
 app.use(cors());
