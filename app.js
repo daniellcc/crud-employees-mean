@@ -6,6 +6,8 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+process.env.ENV_NODE = 'production';
+
 // middlewares
 app.use(cors());
 app.use(express.json());
