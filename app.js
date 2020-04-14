@@ -9,7 +9,7 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(cors());
 app.use(express.json());
-app.get('/dist/crud-employees', expres.static('dist/crud-employees'));
+app.get('/dist/crud-employees/', expres.static('dist/crud-employees'));
 app.use(express.static('dist/crud-employees'));
 
 // routes
