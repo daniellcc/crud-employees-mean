@@ -499,8 +499,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           return this.employeesService.getEmployees().subscribe(function (data) {
-            _this.employees = data.json();
-            _this.list = data.json();
+            _this.employees = data;
+            _this.list = data;
           }, function (error) {
             return _this.toastr.error(error.message, 'Error', {
               timeOut: 5000

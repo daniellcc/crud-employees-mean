@@ -40,9 +40,9 @@ export class DatabaseCardComponent implements OnInit {
   getEmployees(): Subscription {
     return this.employeesService.getEmployees()
       .subscribe(
-        (data) => {
-          this.employees = data.json();
-          this.list = data.json();
+        (data: Employee[]) => {
+          this.employees = data;
+          this.list = data;
         },
         (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000})
       );
