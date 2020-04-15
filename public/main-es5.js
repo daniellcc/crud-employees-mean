@@ -1456,7 +1456,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addEmployee",
         value: function addEmployee(employee) {
-          return this.http.post(this.URL, employee).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
+          return this.http.post(this.URL, employee, {
+            responseType: 'text'
+          }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
         }
       }, {
         key: "deleteEmployee",

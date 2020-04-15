@@ -692,7 +692,7 @@ class EmployeesService {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
     }
     addEmployee(employee) {
-        return this.http.post(this.URL, employee)
+        return this.http.post(this.URL, employee, { responseType: 'text' })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
     }
     deleteEmployee(id) {
