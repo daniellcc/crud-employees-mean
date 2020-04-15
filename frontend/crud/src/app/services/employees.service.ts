@@ -56,10 +56,9 @@ export class EmployeesService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error);
+      console.error('An error occurred:', error.message);
     } else {
-      console.error(error);
-        
+      console.error(error.message);
     }
     return throwError(
       'Something bad happened; please try again later.');

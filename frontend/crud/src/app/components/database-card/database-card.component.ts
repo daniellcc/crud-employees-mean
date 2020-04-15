@@ -40,9 +40,9 @@ export class DatabaseCardComponent implements OnInit {
   getEmployees(): Subscription {
     return this.employeesService.getEmployees()
       .subscribe(
-        (data: Employee[]) => {
-          this.employees = data;
-          this.list = data;
+        (data) => {
+          this.employees = data.json();
+          this.list = data.json();
         },
         (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000})
       );
@@ -50,14 +50,15 @@ export class DatabaseCardComponent implements OnInit {
 
   addEmployee(): Subscription {
     if(this.newEmp.name && this.newEmp.job && this.newEmp.email) {
-      return this.employeesService.addEmployee(this.newEmp).subscribe(
-        () => {
-          this.newEmp = new Employee();
-          this.getEmployees();
-        },
-        (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
-        () => this.toastr.success('Employee added', '',{timeOut: 2000})
-      );
+      return this.employeesService.addEmployee(this.newEmp)
+        .subscribe(
+          () => {
+            this.newEmp = new Employee();
+            this.getEmployees();
+          },
+          (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
+          () => this.toastr.success('Employee added', '',{timeOut: 2000})
+        );
     }
   }
 

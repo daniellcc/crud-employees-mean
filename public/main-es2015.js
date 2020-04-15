@@ -265,13 +265,14 @@ class DatabaseCardComponent {
     getEmployees() {
         return this.employeesService.getEmployees()
             .subscribe((data) => {
-            this.employees = data;
-            this.list = data;
+            this.employees = data.json();
+            this.list = data.json();
         }, (error) => this.toastr.error(error.message, 'Error', { timeOut: 5000 }));
     }
     addEmployee() {
         if (this.newEmp.name && this.newEmp.job && this.newEmp.email) {
-            return this.employeesService.addEmployee(this.newEmp).subscribe(() => {
+            return this.employeesService.addEmployee(this.newEmp)
+                .subscribe(() => {
                 this.newEmp = new _models_employee__WEBPACK_IMPORTED_MODULE_1__["Employee"]();
                 this.getEmployees();
             }, (error) => this.toastr.error(error.message, 'Error', { timeOut: 5000 }), () => this.toastr.success('Employee added', '', { timeOut: 2000 }));
