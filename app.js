@@ -11,4 +11,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
+app.use('*', express.static(path.join(__dirname, 'index.html')));
+
 app.listen(port);
