@@ -9,13 +9,11 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routes
-app.use('/employees', require('./server/routes/employee.routes'));
-
-
-
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public/index.html'));
 });
+
+// routes
+app.use('/employees', require('./server/routes/employee.routes'));
 
 app.listen(port);
