@@ -6,6 +6,9 @@ const { mongoose } = require('./DB');
 const app = express();
 
 const port = process.env.PORT || 8080;
+app.get('*',(req, res) => {
+  response.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
