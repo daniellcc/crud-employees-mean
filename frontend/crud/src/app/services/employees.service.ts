@@ -39,7 +39,7 @@ export class EmployeesService {
   }
 
   addEmployee(employee: Employee): Observable<any> {
-    return this.http.post(this.URL, employee)
+    return this.http.post(this.URL, employee, { responseType: 'text'})
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -58,7 +58,7 @@ export class EmployeesService {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.message);
     } else {
-      console.error(error.message);
+      console.error(error);
     }
     return throwError(
       'Something bad happened; please try again later.');

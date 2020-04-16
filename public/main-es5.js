@@ -1471,7 +1471,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (error.error instanceof ErrorEvent) {
             console.error('An error occurred:', error.message);
           } else {
-            console.error(error.message);
+            console.error(error);
           }
 
           return Object(rxjs_internal_observable_throwError__WEBPACK_IMPORTED_MODULE_1__["throwError"])('Something bad happened; please try again later.');
