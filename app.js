@@ -7,14 +7,13 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
-// middlewares
-app.use(cors());
-app.use(express.json());
-
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
-app.use(express.static(path.join(__dirname, '/./public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('*', (req, res) => {
+  response.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 app.listen(port);
