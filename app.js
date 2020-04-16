@@ -13,12 +13,13 @@ app.use(express.json());
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
+
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.listen(port);
