@@ -8,7 +8,6 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // middlewares
-app.use(express.json());
 
 app.get('*', express.static(path.join(__dirname, 'index.html')));
 
