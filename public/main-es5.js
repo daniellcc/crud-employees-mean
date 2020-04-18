@@ -1435,7 +1435,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, EmployeesService);
 
         this.http = http;
-        this.URL = 'employees';
+        this.URL = '/employees';
       }
 
       _createClass(EmployeesService, [{
