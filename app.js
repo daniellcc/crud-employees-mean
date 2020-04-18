@@ -9,11 +9,12 @@ const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/employees', express.static(path.join(__dirname, 'public')));
+app.use('/employees/emp:id', express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
-app.use('/*', express.static(path.join(__dirname, 'public')));
+
 
 // not found 404
 app.use((req, res, next) => {
