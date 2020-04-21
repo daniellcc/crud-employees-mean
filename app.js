@@ -17,7 +17,7 @@ app.use('/employees', require('./server/routes/employee.routes.js'));
 
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, ' public/index.html'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port);
