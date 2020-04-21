@@ -1,8 +1,0 @@
-.navbar { /*remove navbar border */
-	box-shadow: none !important;
-}
-
-.collapsing { /*remove animation because delay problems*/
-   transition: none;
-   display: none;
-}

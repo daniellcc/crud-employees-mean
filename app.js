@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/employees', require('./server/routes/employee.routes'));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/crud/dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 // not found 404
