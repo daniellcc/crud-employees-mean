@@ -18,10 +18,8 @@ app.use('/employees', require('./server/routes/employee.routes'));
 app.get('/', (req,res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 })
-app.get('/employees', (req,res) => {
-	res.sendFile(path.join(__dirname, 'public/index.html'));
-})
-app.get('/employees/emp/:id', (req,res) => {
+
+app.get('/emp/:id', (req,res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
