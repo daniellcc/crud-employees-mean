@@ -677,7 +677,7 @@ __webpack_require__.r(__webpack_exports__);
 class EmployeesService {
     constructor(http) {
         this.http = http;
-        this.URL = '/employees';
+        this.URL = 'https://crud-employees-app.herokuapp.com/employees';
     }
     getEmployees() {
         return this.http.get(this.URL)
