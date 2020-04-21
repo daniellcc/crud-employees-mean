@@ -447,15 +447,15 @@
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\daniel\Desktop\crud-employees\frontend\crud\src\styles.css */
+    /*! C:\Users\daniel\Desktop\crud-employees\frontend\src\styles.css */
     "./src/styles.css");
 
     __webpack_require__(
-    /*! C:\Users\daniel\Desktop\crud-employees\frontend\crud\node_modules\ngx-toastr\toastr.css */
+    /*! C:\Users\daniel\Desktop\crud-employees\frontend\node_modules\ngx-toastr\toastr.css */
     "./node_modules/ngx-toastr/toastr.css");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\daniel\Desktop\crud-employees\frontend\crud\node_modules\bootstrap-material-design\dist\css\bootstrap-material-design.css */
+    /*! C:\Users\daniel\Desktop\crud-employees\frontend\node_modules\bootstrap-material-design\dist\css\bootstrap-material-design.css */
     "./node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css");
     /***/
   }

@@ -1435,7 +1435,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, EmployeesService);
 
         this.http = http;
-        this.URL = '/employees';
+        this.URL = 'employees';
       }
 
       _createClass(EmployeesService, [{
@@ -1456,9 +1456,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addEmployee",
         value: function addEmployee(employee) {
-          return this.http.post(this.URL, employee, {
-            responseType: 'text'
-          }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
+          return this.http.post(this.URL, employee).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
         }
       }, {
         key: "deleteEmployee",
@@ -1606,7 +1604,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\daniel\Desktop\crud-employees\frontend\crud\src\main.ts */
+    /*! C:\Users\daniel\Desktop\crud-employees\frontend\src\main.ts */
     "./src/main.ts");
     /***/
   }

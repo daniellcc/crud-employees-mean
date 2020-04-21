@@ -677,7 +677,7 @@ __webpack_require__.r(__webpack_exports__);
 class EmployeesService {
     constructor(http) {
         this.http = http;
-        this.URL = '/employees';
+        this.URL = 'employees';
     }
     getEmployees() {
         return this.http.get(this.URL)
@@ -692,7 +692,7 @@ class EmployeesService {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
     }
     addEmployee(employee) {
-        return this.http.post(this.URL, employee, { responseType: 'text' })
+        return this.http.post(this.URL, employee)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["retry"])(3), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError));
     }
     deleteEmployee(id) {
@@ -783,7 +783,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\daniel\Desktop\crud-employees\frontend\crud\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\daniel\Desktop\crud-employees\frontend\src\main.ts */"./src/main.ts");
 
 
 /***/ })

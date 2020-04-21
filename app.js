@@ -12,10 +12,6 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('*', (req,res) => {
-	res.sendFile(path.join(__dirname, 'public'));
-})
-
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
@@ -29,6 +25,10 @@ app.use((err, req, res, next) => {
 	console.error(err.message);
 	if(!err.statusCode) err.statusCode = 500;
 	res.status(err.statusCode.send(err.message));
+})
+
+app.get('*', (req,res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
 app.listen(port);
