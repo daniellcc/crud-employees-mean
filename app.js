@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(cors());
 
-app.use(express.static('dist/'));
+app.use(express.static('public'));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
