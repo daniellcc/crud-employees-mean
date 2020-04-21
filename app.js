@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(cors());
 
-app.use('/statics', express.static('public'));
+app.use('/app', express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) => {
 	res.sendFile(__dirname, 'index.html');
