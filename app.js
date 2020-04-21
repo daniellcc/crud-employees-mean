@@ -10,11 +10,10 @@ const port = process.env.PORT || 8080;
 // middlewares
 app.use(cors());
 
-app.use(express.static('dist'));
+app.use('/employees', express.static('dist'));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
-
 
 // not found 404
 app.use((req, res, next) => {
