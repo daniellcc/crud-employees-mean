@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-app.use('/employees', require('./server/routes/employee.routes.js'));
+app.use('/employees', require('./server/routes/employee.routes'));
 
 
 app.get('*', (req, res) => {
