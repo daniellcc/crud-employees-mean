@@ -16,6 +16,9 @@ app.use('*', express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'index.html'));
+})
 
 // not found 404
 app.use((req, res, next) => {
