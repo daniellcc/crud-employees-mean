@@ -15,7 +15,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
-app.get('*', (req,res) => {
+app.get('/', (req,res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+})
+app.get('/employees', (req,res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+})
+app.get('/employees/emp/:id', (req,res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 
