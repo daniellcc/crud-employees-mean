@@ -12,9 +12,7 @@ app.use(cors());
 
 app.use('/app', express.static(path.join(__dirname, 'public')));
 
-app.get('*', (req, res) => {
-	res.sendFile(__dirname, 'index.html');
-});
+
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
