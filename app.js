@@ -11,11 +11,13 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port);
