@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 
 
-app.use('/', serveStatic(path.join(__dirname, 'public')));
+app.use('/employees', serveStatic(path.join(__dirname, 'public')));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
