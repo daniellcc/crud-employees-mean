@@ -15,7 +15,7 @@ app.use(cors());
 app.use('/employees', require('./server/routes/employee.routes'));
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, 'public/index.html'));
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port);
