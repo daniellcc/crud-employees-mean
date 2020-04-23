@@ -3,7 +3,7 @@ var express = require('express'),
    fs = require('fs');
 var compression = require('compression');
 var app = express();
-var staticRoot = __dirname + '/public';
+var staticRoot = __dirname + '/';
 var env = process.env.NODE_ENV || 'development';
 
 app.set('port', (process.env.PORT || 5000));
@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
         return next();
     }
 
-    fs.createReadStream(staticRoot + 'index.html').pipe(res);
+    fs.createReadStream(staticRoot + 'public/index.html').pipe(res);
 
 });
 
