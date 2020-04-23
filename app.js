@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
         return next();
     }
 
-    fs.createReadStream(staticRoot + 'public/index.html').pipe(res);
+    fs.createReadStream(staticRoot + 'index.html').pipe(res);
 
 });
 
