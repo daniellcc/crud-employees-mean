@@ -1,20 +1,38 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const serveStatic = require('serve-static');
-const { mongoose } = require('./DB');
+var express = require('express'),
+   path = require('path'),
+   fs = require('fs');
+var compression = require('compression');
+var app = express();
+var staticRoot = __dirname + '/';
+var env = process.env.NODE_ENV || 'development';
 
-const app = express();
+app.set('port', (process.env.PORT || 5000));
 
-const port = process.env.PORT || 8080;
+app.use(compression());
 
-app.use(cors());
+/* place any backend routes you have here */    
 
-
-app.use(serveStatic(path.join(__dirname, 'public')));
-
-// routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
+app.use(function(req, res, next) {
+    //if the request is not html then move along
+    var accept = req.accepts('html', 'json', 'xml');
+    if (accept !== 'html') {
+        return next();
+    }
 
-app.listen(port);
+    // if the request has a '.' assume that it's for a file, move along
+    var ext = path.extname(req.path);
+    if (ext !== '') {
+        return next();
+    }
+
+    fs.createReadStream(staticRoot + 'index.html').pipe(res);
+
+});
+
+app.use(express.static(staticRoot));
+
+app.listen(app.get('port'), function() {
+    console.log('app running on port', app.get('port'));
+});
