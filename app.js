@@ -12,9 +12,6 @@ const port = process.env.PORT || 8080;
 app.use(compression());
 app.use(cors());
 
-app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/public/index.html');
-})
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
