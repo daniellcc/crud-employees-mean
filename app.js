@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 
 app.use(compression());
 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
