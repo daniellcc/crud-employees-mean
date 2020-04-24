@@ -17,9 +17,5 @@ app.use(serveStatic(path.join(__dirname, 'public')));
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, '404.html'));
-})
-
 
 app.listen(port);
