@@ -15,7 +15,7 @@ app.use(compression());
 app.use(express.static(__dirname, 'public'));
 
 app.get('/', (req,res) => {
-	res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // routes
