@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const compression = require('compression');
 const serveStatic = require('serve-static');
-const compression = require('compresison');
 const { mongoose } = require('./DB');
 
 const app = express();
