@@ -13,7 +13,7 @@ const port = process.env.PORT || 8080;
 app.use(compression());
 
 app.use(express.static(__dirname + '/public'));
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
