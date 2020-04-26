@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.static(root));
 
 // history fallback
-app.use(fallback('index.html', { root }));
+app.use(fallback('index.html', { root: root }));
 
 app.get('*', (req, res) => {
 	res.sendFile(root + '/index.html');
