@@ -10,10 +10,9 @@ const port = process.argv[2]; // get port from command line argument
 const root = __dirname + '/public';
 
 // public
-app.use(express.static(root));
 
 // history fallback
-app.use(fallback(__dirname + '/index.html'))
+app.use(fallback(__dirname + '/public/index.html'))
 
 app.use(cors());
 
