@@ -13,7 +13,7 @@ app.use(cors());
 // public
 app.use(express.static(root));
 
-app.use('*'. express.static(root));
+app.use('*', express.static(root));
 
 
 // routes
