@@ -17,9 +17,6 @@ app.use(express.static(root));
 // history fallback
 app.use(fallback('index.html', { root: root }));
 
-app.get('*', (req, res) => {
-	res.sendFile(root + '/index.html');
-})
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
