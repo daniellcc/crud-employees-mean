@@ -7,7 +7,7 @@ const app = express();
 
 const port = process.argv[2]; // get port from command line argument
 
-const root = __dirname + '/public';
+const root = `${__dirname}/public`;
 
 // public
 app.use(express.static(root));
