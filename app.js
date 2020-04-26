@@ -17,7 +17,7 @@ app.use(express.static(root));
 // history fallback
 app.use(fallback('index.html', { root }));
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
 	res.sendFile(root + '/index.html');
 })
 
