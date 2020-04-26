@@ -8,7 +8,7 @@ const port = process.env.PORT || 8000; // get port from command line argument
 
 const root = __dirname + '/public';
 
-app.use(cors());
+
 
 // public
 app.use(express.static(root));
