@@ -1,20 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+const fallback = require('express-history-api-fallback');
 const { mongoose } = require('./DB');
 
 const app = express();
 
-const port = process.env.PORT || 8080;
+const port = process.argv[2]; // get port from command line argument
+
+const root = __dirname + '/public';
+
+// public
+app.use(express.static(root));
+
+// history fallback
+app.use(fallback('index.html', { root }));
 
 app.use(cors());
-
-app.use(express.static(__dirname + '/public'));
-app.use('*', express.static(__dirname + '/public'));
-
-app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html')
-})
 
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
