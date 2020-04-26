@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeesService {
-  protected URL: string = 'employees';
+  protected URL: string = '/employees';
 
   constructor(private http: HttpClient) { }
 
