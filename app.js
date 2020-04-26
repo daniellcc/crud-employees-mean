@@ -18,11 +18,6 @@ app.use(express.static(root));
 app.use(fallback('index.html', { root }));
 
 
-
-app.get('/*', (req, res) => {
-	res.sendFile(root +'/index.html');
-}
-
 // routes
 app.use('/employees', require('./server/routes/employee.routes'));
 
