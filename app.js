@@ -5,7 +5,7 @@ const { mongoose } = require('./DB');
 
 const app = express();
 
-const port = process.env.PORT | 5000; // get port from command line argument
+const port = process.argv[2]; // get port from command line argument
 
 const root = `${__dirname}/public`;
 
@@ -17,8 +17,6 @@ app.use(fallback('index.html', { root }));
 
 app.use(cors());
 
-// routes
-app.use('/employees', require('./server/routes/employee.routes'));
 
 
 app.listen(port);
