@@ -13,7 +13,7 @@ const root = __dirname + '/public';
 app.use(express.static(root));
 
 // history fallback
-app.use(fallback(__dirname + '/app.html'))
+app.use(fallback(__dirname + '/index.html'))
 
 app.use(cors());
 
