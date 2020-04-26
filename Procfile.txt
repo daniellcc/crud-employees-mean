@@ -1,1 +1,1 @@
-web: node app $PORT
+web: node server $PORT
