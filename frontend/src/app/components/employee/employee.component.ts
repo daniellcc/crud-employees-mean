@@ -48,7 +48,7 @@ export class EmployeeComponent implements OnInit {
         () => true,
         (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
         () => this.toastr.success('Employee updated', '', {timeOut: 2000})
-      )
+      );
   }
 
   deleteEmployee(): void {

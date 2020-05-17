@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DatabaseCardComponent } from './components/database-card/database-card.component';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DatabaseCardComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

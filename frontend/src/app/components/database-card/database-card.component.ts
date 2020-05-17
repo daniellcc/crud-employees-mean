@@ -43,8 +43,7 @@ export class DatabaseCardComponent implements OnInit {
         (data: Employee[]) => {
           this.employees = data;
           this.list = data;
-        },
-        (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000})
+        }
       );
   }
 
@@ -56,7 +55,7 @@ export class DatabaseCardComponent implements OnInit {
             this.newEmp = new Employee();
             this.getEmployees();
           },
-          (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
+          () => true,
           () => this.toastr.success('Employee added', '',{timeOut: 2000})
         );
     }
@@ -64,7 +63,8 @@ export class DatabaseCardComponent implements OnInit {
 
   searchEmp(): void {
     this.employees = this.list.filter(emp => {
-      return emp.name.includes(this.searchValue);
+      const name = emp.name.toLowerCase();
+      return name.includes(this.searchValue);
     });
     this.returnAll = true;
     this.cdr.detectChanges();
