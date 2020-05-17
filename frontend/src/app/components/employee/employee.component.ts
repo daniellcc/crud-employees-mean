@@ -38,7 +38,10 @@ export class EmployeeComponent implements OnInit {
     return this.employeesService.getEmployee(id)
       .subscribe(
         (data: Employee) => this.employee = data,
-        (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000})
+        (error: Error) => {
+          this.toastr.error(error.message, 'Error', {timeOut: 5000});
+          console.log(error);
+        }
       );
   }
 
@@ -46,7 +49,10 @@ export class EmployeeComponent implements OnInit {
     return this.employeesService.editEmployee(this.employee)
       .subscribe(
         () => true,
-        (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
+        (error: Error) => {
+          this.toastr.error(error.message, 'Error', {timeOut: 5000});
+          console.log(error);
+        },
         () => this.toastr.success('Employee updated', '', {timeOut: 2000})
       );
   }
@@ -55,7 +61,10 @@ export class EmployeeComponent implements OnInit {
     const id = this.employee._id
     this.employeesService.deleteEmployee(id).subscribe(
       () => true,
-      (error: Error) => this.toastr.error(error.message, 'Error', {timeOut: 5000}),
+      (error: Error) => {
+        this.toastr.error(error.message, 'Error', {timeOut: 5000})
+        console.log(error);
+      },
       () => {
         this.router.navigate(['/employees'])
         this.toastr.warning('Employee deleted', '', {timeOut: 2000})

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Employee } from '../models/employee';
-import { throwError } from 'rxjs/internal/observable/throwError';
-import { catchError, retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
