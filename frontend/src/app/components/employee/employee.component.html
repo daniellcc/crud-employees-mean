@@ -4,7 +4,7 @@
 	</i>
 
 	<div class="d-flex justify-content-between mb-4">
-		<h5>{{ employee.name | titlecase}}</h5>
+		<h2>{{ employee.name | titlecase }}</h2>
 		<div class="d-flex">
 
 			<div> <!--   EDIT EMPLOYEE MODAL   -->
@@ -14,7 +14,7 @@
 					<div class="modal-dialog modal-dialog-centered modal-sm">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">Edit employee</h5>
+								<h3 class="modal-title">Edit employee</h3>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -67,17 +67,17 @@
 	</div>
     
 	<div class="mb-5">
-		<h6 class="font-weight-bold">ID</h6>
+		<h4 class="font-weight-bold">ID</h4>
 		<p  class="font-weight-normal">{{ employee._id }}</p>
 	</div>
 
 	<div class="mb-5">
-		<h6 class="font-weight-bold">Job</h6>
+		<h4 class="font-weight-bold">Job</h4>
 		<p>{{ employee.job }}</p>
 	</div>
 
 	<div>
-		<h6 class="font-weight-bold">Email</h6>
+		<h4 class="font-weight-bold">Email</h4>
 		<p>{{ employee.email }}</p>
 	</div>
 </div>
