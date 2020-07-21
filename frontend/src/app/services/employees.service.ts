@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
+=======
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+>>>>>>> 0c8b105e24f43d7395d2488bd3d4152eb5e26eec
 
 import { Employee } from '../models/employee';
 import { Observable } from 'rxjs';
@@ -10,7 +14,11 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class EmployeesService {
+<<<<<<< HEAD
   protected URL: string = 'http://localhost:8000/employees'; 
+=======
+  protected URL: string = 'employees';
+>>>>>>> 0c8b105e24f43d7395d2488bd3d4152eb5e26eec
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 

@@ -4,7 +4,7 @@ const { mongoose } = require('./DB');
 
 const app = express();
 
-const port = process.env.PORT || 8000; // get port from command line argument
+const port = process.env.PORT || 8000;
 
 const root = __dirname + '/public';
 

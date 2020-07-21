@@ -4,7 +4,12 @@
   "description": "server side crud",
   "main": "app.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "nodemon app.js"
+=======
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+>>>>>>> 0c8b105e24f43d7395d2488bd3d4152eb5e26eec
   },
   "author": "Daniel Cedeño",
   "license": "ISC",
