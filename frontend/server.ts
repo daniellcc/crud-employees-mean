@@ -8,22 +8,60 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+import { Mongoose, Schema } from 'mongoose';
+
+import * as cors from 'cors';
+import { Observable } from 'rxjs';
+import { HttpBackend, HttpRequest } from '@angular/common/http';
+import { RequestListener } from 'http';
+import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/crud/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+  server.use(cors());
+  server.use(express.json());
+  server.use(express.urlencoded({ extended: true }));
+  server.use(express.static(distFolder));
+  
+  server.use('*', express.static(distFolder));
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
+    bootstrap: AppServerModule
   }));
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
+  const URI = 'mongodb+srv://daniel:santinojardani@cluster0-ynpa7.mongodb.net/test?retryWrites=true&w=majority';
+  const mongoose = new Mongoose();
+
+  mongoose.connect(URI, { useNewUrlParser: true,useUnifiedTopology: true })
+	  .then(db => console.log('db connected'))
+    .catch(err => console.error(err));
+
+  const employeeSchema: Schema = new Schema({
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    job: {
+      type: String,
+      required: true
+    }
+  });
+
+  const Employee = mongoose.model('Employee', employeeSchema);
+
   // Example Express Rest API endpoints
-  // app.get('/api/**', (req, res) => { });
+  // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
@@ -34,10 +72,17 @@ export function app() {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
+  server.get('/api/employees', async (req, res) => {
+
+    const employees = await Employee.find();
+    res.json(employees);
+    
+  })
+
   return server;
 }
 
-function run() {
+function run(): void {
   const port = process.env.PORT || 4000;
 
   // Start up the Node server

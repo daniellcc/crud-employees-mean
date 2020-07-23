@@ -13,3 +13,5 @@ input {
 	  linear-gradient(0deg,rgba(0,0,0,.26) 1px,
 	  transparent 0) !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
