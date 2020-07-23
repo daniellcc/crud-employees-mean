@@ -1,16 +1,9 @@
-<header class="container">
-  <div class="row justify-content-center">
-    <app-navbar class="col-md-6 col-lg-6 col-xl-4"></app-navbar>
-  </div>
-  
+<header>
+    <app-navbar></app-navbar>
 </header>
 
-<main  class="container-fluid  p-0">
-  <div class="row no-gutters justify-content-center">
-    <div class="card w-100 col-md-6 col-lg-5 col-xl-4" id="main-card">
-      <div class="card-body">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
+<main>
+  <mat-card>
+    <router-outlet></router-outlet>
+  </mat-card>
 </main>

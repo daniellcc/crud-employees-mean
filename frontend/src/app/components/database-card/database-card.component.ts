@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -7,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { Employee } from '../../models/employee';
 
 import { EmployeesService } from '../../services/employees.service';
+import { EmployeeFormComponent } from 'src/app/shared/components/employee-form/employee-form.component';
 
 @Component({
   selector: 'app-database-card',
@@ -14,8 +16,6 @@ import { EmployeesService } from '../../services/employees.service';
   styleUrls: ['./database-card.component.css']
 })
 export class DatabaseCardComponent implements OnInit {
-  employees: Employee[] = [];
-  list: Employee[] = [];
 
   newEmp: Employee = new Employee();  
   searchValue: string;
@@ -23,28 +23,22 @@ export class DatabaseCardComponent implements OnInit {
   returnAll: boolean = false;
 
   constructor(private employeesService: EmployeesService,
+              private dialog: MatDialog,
               private cdr: ChangeDetectorRef,
               private toastr: ToastrService) { }
-
+              
   ngOnInit(): void {
-    this.getEmployees();
   }
 
+
   ngOnDestroy(): void {
-    this.getEmployees().unsubscribe();
     if (this.newEmp.email) {
       this.addEmployee().unsubscribe();
     }
   }
 
-  getEmployees(): Subscription {
-    return this.employeesService.getEmployees()
-      .subscribe(
-        (data: Employee[]) => {
-          this.employees = data;
-          this.list = data;
-        }
-      );
+  openAdd() {
+    this.dialog.open(EmployeeFormComponent);
   }
 
   addEmployee(): Subscription {
@@ -53,26 +47,10 @@ export class DatabaseCardComponent implements OnInit {
         .subscribe(
           () => {
             this.newEmp = new Employee();
-            this.getEmployees();
           },
           () => true,
           () => this.toastr.success('Employee added', '',{timeOut: 2000})
         );
     }
-  }
-
-  searchEmp(): void {
-    this.employees = this.list.filter(emp => {
-      const name = emp.name.toLowerCase();
-      return name.includes(this.searchValue);
-    });
-    this.returnAll = true;
-    this.cdr.detectChanges();
-  }
-
-  returnToAll(): void {
-    this.employees = this.list;
-    this.returnAll = !this.returnAll;
-    this.cdr.detectChanges();
   }
 }

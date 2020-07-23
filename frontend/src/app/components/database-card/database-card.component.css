@@ -1,0 +1,8 @@
+.mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.mat-form-field {
+  width: 80%;
+  font-size: 17px;
+}

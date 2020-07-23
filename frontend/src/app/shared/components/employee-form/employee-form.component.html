@@ -1,0 +1,28 @@
+<h3 mat-dialog-title>Add Employee</h3>
+<form mat-dialog-content>
+  <section>
+    <mat-form-field appearance="legacy">
+      <input matInput type="text" name="name" placeholder="name" required>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Select job</mat-label>
+      <select matNativeControl name="job" required>
+        <option *ngFor="let job of jobs" value="{{ job }}">{{ job }}</option>
+      </select>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field appearance="legacy">
+      <input matInput type="email" name="email" placeholder="email" required>
+    </mat-form-field>
+  </section>
+</form>
+
+<div mat-dialog-actions align="end">
+  <button mat-flat-button>Add</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

@@ -1,22 +1,12 @@
-<nav class="navbar navbar-light">
-  <h1 class="navbar-brand font-weight-light" [routerLink]="['/employees']">
-  		<a>DB Employees</a> 
-	</h1>
+<nav>
+  <mat-toolbar>
+    <h1>
+      <a routerLink='/employees' color="primary">DB Employees</a>
+    </h1>
 
-  
-  <button class="btn btn-dark m-0" data-toggle="collapse" data-target="#collapseAbout"
-   role="button" aria-expanded="false" aria-controls="collapseAbout">
-  	<small class="font-weight-normal">About</small>
-  </button>
-
-  <div class="collapse" id="collapseAbout" style="width: 100%">
-    <div class="card card-body text-center">
-      <p>By Daniel C. Cardona</p>
-      <a class="btn btn-primary btn-small" href="https://github.com/daniellcc"
-         target="_blank">
-        Github
-      </a>
-      <a class="btn btn-primary btn-small" href="http://danielccardona.my-board.org/" target="_blank">Portafolio</a>
-    </div>
-  </div>
+    <button mat-button (click)="openAbout()">
+      About
+    </button>
+    
+  </mat-toolbar>
 </nav>
