@@ -1,4 +1,5 @@
 main .mat-card {
   max-width: 500px;
+  min-height: 600px;
   margin: auto
 }

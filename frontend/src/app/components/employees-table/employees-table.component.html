@@ -11,8 +11,8 @@
   </ng-container>
   <ng-container matColumnDef="link">
     <th mat-header-cell *matHeaderCellDef ></th>
-    <td mat-cell *matCellDef="let employee" [routerLink]="['emp', employee._id]" class="emp-link">
-      <button mat-button>
+    <td mat-cell *matCellDef="let employee" class="emp-link">
+      <button mat-button  [routerLink]="['emp', employee._id]">
         Details
       </button>
       

@@ -12,3 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-toolbar{
 	background-color: white;
 }
+
+.mat-card:not([class*=mat-elevation-z]) {
+	box-shadow: none;
+}

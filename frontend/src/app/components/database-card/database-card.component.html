@@ -2,13 +2,11 @@
 	<mat-toolbar>
 		<mat-toolbar-row>
 			<header>
-				<h2>
-					<mat-card-header> Employees list </mat-card-header>
-				</h2>
+				<h2>Employees list</h2>
 			</header>
 
-			<button mat-button (click)="openAdd()">
-				<i class="material-icons"> person_add </i>
+			<button mat-icon-button (click)="openAdd()">
+				<mat-icon>person_add</mat-icon>
 			</button>
 		</mat-toolbar-row>
 
@@ -16,7 +14,9 @@
 			<mat-form-field appearance="legacy" class="search-form">
 				<input  matInput placeholder="search employee">
 			</mat-form-field>
-			<button mat-stroked-button>Search</button>
+			<button mat-icon-button>
+				<mat-icon>search</mat-icon>
+			</button>
 		</mat-toolbar-row>
 		
 	</mat-toolbar>

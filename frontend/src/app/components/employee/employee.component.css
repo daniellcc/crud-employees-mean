@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.emp-info {
+  margin-top: 70px;
+}
+
+.mat-list-item-content {
+  padding: 0;
+}

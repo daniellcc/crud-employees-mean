@@ -1,83 +1,51 @@
-<div *ngIf="employee"  style="padding: 0 12px;">
-	<i class="material-icons mb-3" [routerLink]="['/employees']">
-		navigate_before
-	</i>
+<div *ngIf="employee">
+	<section>
+		<header>
+			<nav>
+				<button mat-stroked-button [routerLink]="['/employees']">
+					<mat-icon>navigate_before</mat-icon>
+				</button>
 
-	<div class="d-flex justify-content-between mb-4">
-		<h2>{{ employee.name | titlecase }}</h2>
-		<div class="d-flex">
-
-			<div> <!--   EDIT EMPLOYEE MODAL   -->
-				<i class="material-icons px-2" data-toggle="modal" 
-				data-target="#editEmp">edit</i>
-				<div class="modal fade" id="editEmp" tabindex="-1" role="dialog" >
-					<div class="modal-dialog modal-dialog-centered modal-sm">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h3 class="modal-title">Edit employee</h3>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<input type="text" class="form-control"  name="name" placeholder="name"
-												[(ngModel)]="this.employee.name">
-							
-								<input type="text" class="form-control mt-3" name="job" placeholder="job" #job
-												[(ngModel)]="this.employee.job">
-							
-								<input type="email" class="form-control mt-3" name="email" placeholder="email" #email
-												[(ngModel)]="this.employee.email">
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success mt-4"  data-dismiss="modal" aria-label="Close"
-												(click)="editEmployee()">
-									Save
-								</button>
-							</div> 
-						</div>
-					</div>
+				<div>
+					<button mat-icon-button>
+						<mat-icon>edit</mat-icon>
+					</button>
+					<button mat-icon-button color="warn">
+						<mat-icon>delete</mat-icon>
+						
+					</button>
 				</div>
-			</div>
-			
-			<div> <!--   DELETE EMPLOYEE MODAL   -->
-				<i class="material-icons px-2" data-toggle="modal" 
-				data-target="#confirmDel">delete</i>
-				
-				<div class="modal fade" id="confirmDel">
-					<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-						<div class="modal-content">
-							<div class="modal-body">
-								<p>¿Are you sure you want to delete the employee: {{ employee.name | titlecase }}?</p>
-							</div>
-							<div class="modal-footer d-flex justify-content-between">
-								<button class="btn btn-raised btn-danger" data-dismiss="modal" aria-label="Close" (click)="deleteEmployee()">
-									Delete
-								</button>
-								<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
-									Cancel 
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			</nav>
+		</header>
+		
+		
+	</section>
 
-		</div>
-	</div>
-    
-	<div class="mb-5">
-		<h4 class="font-weight-bold">ID</h4>
-		<p  class="font-weight-normal">{{ employee._id }}</p>
-	</div>
+	<section class="emp-info">
+		<mat-list role="list">
+			<mat-list-item>
+				<header>
+					<h2>{{ employee.name | titlecase }}</h2>
+				</header>
+			</mat-list-item>
+			<mat-list-item>
+				<h3 mat-line>ID</h3>
+				<p mat-line>{{ employee._id }}</p>
+			</mat-list-item>
 
-	<div class="mb-5">
-		<h4 class="font-weight-bold">Job</h4>
-		<p>{{ employee.job }}</p>
-	</div>
+			<mat-divider></mat-divider>
 
-	<div>
-		<h4 class="font-weight-bold">Email</h4>
-		<p>{{ employee.email }}</p>
-	</div>
+			<mat-list-item>
+				<h3 mat-line>Job</h3>
+				<p mat-line>{{ employee.job }}</p>
+			</mat-list-item>
+
+			<mat-divider></mat-divider>
+
+			<mat-list-item>
+				<h3 mat-line>Email</h3>
+				<p mat-line>{{ employee.email }}</p>
+			</mat-list-item>
+		</mat-list>
+	</section>
 </div>
