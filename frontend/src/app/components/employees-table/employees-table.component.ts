@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EmployeesService } from '../../services/employees.service';
-import { Subscription, Unsubscribable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Employee } from 'src/app/models/employee';
+
+
 
 @Component({
   selector: 'app-employees-table',
@@ -28,7 +30,8 @@ export class EmployeesTableComponent implements OnInit {
       .subscribe(
         (data: Employee[]) => {
           this.employees = data;
-        }
+        },
+        (error: Error) => console.log(error)
       );
   }
 }

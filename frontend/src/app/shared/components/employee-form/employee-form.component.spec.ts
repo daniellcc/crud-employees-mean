@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeFormComponent } from './employee-form.component';
 
-describe('EmployeeFormComponent', () => {
+describe('CreateEmpFormComponent', () => {
   let component: EmployeeFormComponent;
   let fixture: ComponentFixture<EmployeeFormComponent>;
 

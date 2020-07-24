@@ -1,8 +1,17 @@
-<h3 mat-dialog-title>Add Employee</h3>
+<h3 mat-dialog-title *ngIf="typeFormAdd; else typeFormEdit">Add Employee</h3>
+<ng-template  #typeFormEdit>
+  <h3 mat-dialog-title>Edit Employee</h3>
+
+
+</ng-template>
+
 <form mat-dialog-content>
   <section>
     <mat-form-field appearance="legacy">
-      <input matInput type="text" name="name" placeholder="name" required>
+      <input *ngIf="!typeFormAdd; else addNameInput" matInput type="text" name="name" placeholder="name" required>
+      <ng-template  #addNameInput>
+        <input  matInput type="text" name="name" placeholder="name" required>
+      </ng-template>
     </mat-form-field>
   </section>
 
@@ -17,7 +26,10 @@
 
   <section>
     <mat-form-field appearance="legacy">
-      <input matInput type="email" name="email" placeholder="email" required>
+      <input *ngIf="!typeFormAdd; else addEmailInput" matInput type="email" name="email" placeholder="email" required>
+      <ng-template #addEmailInput>
+        <input  matInput type="email" name="email" placeholder="email" required>
+      </ng-template>
     </mat-form-field>
   </section>
 </form>

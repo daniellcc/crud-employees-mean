@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 //material
-import { MatTableModule, MatTable } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule, MatToolbar} from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -18,6 +18,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 //components
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ import { EmployeesTableComponent } from './components/employees-table/employees-
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
     ToastrModule.forRoot()
   ],
   providers: [],

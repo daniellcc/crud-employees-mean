@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'about',
-  templateUrl: './about.html'
+  templateUrl: './about.html',
+  styles: [`a {color: rgb(0 126 255); text-decoration: none;}`]
 })
 export class about {}
 

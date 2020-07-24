@@ -5,44 +5,42 @@
 				<button mat-stroked-button [routerLink]="['/employees']">
 					<mat-icon>navigate_before</mat-icon>
 				</button>
-
-				<div>
-					<button mat-icon-button>
-						<mat-icon>edit</mat-icon>
-					</button>
-					<button mat-icon-button color="warn">
-						<mat-icon>delete</mat-icon>
-						
-					</button>
-				</div>
 			</nav>
 		</header>
-		
-		
 	</section>
 
 	<section class="emp-info">
+		<header>
+			<h2>{{ employee.name | titlecase }}</h2>
+
+			<div>
+				<button mat-icon-button (click)="openEdit()">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button color="warn" (click)="deleteEmployee()">
+					<mat-icon>delete</mat-icon>
+					
+				</button>
+			</div>
+		</header>
+		
+
 		<mat-list role="list">
-			<mat-list-item>
-				<header>
-					<h2>{{ employee.name | titlecase }}</h2>
-				</header>
-			</mat-list-item>
-			<mat-list-item>
+			<mat-list-item role="listitem">
 				<h3 mat-line>ID</h3>
 				<p mat-line>{{ employee._id }}</p>
 			</mat-list-item>
 
 			<mat-divider></mat-divider>
 
-			<mat-list-item>
+			<mat-list-item role="listitem">
 				<h3 mat-line>Job</h3>
 				<p mat-line>{{ employee.job }}</p>
 			</mat-list-item>
 
 			<mat-divider></mat-divider>
 
-			<mat-list-item>
+			<mat-list-item role="listitem">
 				<h3 mat-line>Email</h3>
 				<p mat-line>{{ employee.email }}</p>
 			</mat-list-item>
