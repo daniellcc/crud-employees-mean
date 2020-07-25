@@ -1,12 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { Subscription } from 'rxjs';
-
-import { Employee } from '../../models/employee';
-
-import { EmployeesService } from '../../services/employees.service';
 import { EmployeeFormComponent } from 'src/app/shared/components/employee-form/employee-form.component';
 
 @Component({
@@ -16,40 +10,15 @@ import { EmployeeFormComponent } from 'src/app/shared/components/employee-form/e
 })
 export class DatabaseCardComponent implements OnInit {
 
-  newEmp: Employee = new Employee();  
-  searchValue: string;
-
-  returnAll: boolean = false;
-
-  constructor(private employeesService: EmployeesService,
-              private dialog: MatDialog,
-              private cdr: ChangeDetectorRef,
-              private toastr: ToastrService) { }
+  constructor(private dialog: MatDialog) { }
               
   ngOnInit(): void {
   }
 
-
-  ngOnDestroy(): void {
-    if (this.newEmp.email) {
-      this.addEmployee().unsubscribe();
-    }
-  }
-
   openAdd() {
-    this.dialog.open(EmployeeFormComponent);
-  }
+    const dialogOptions: MatDialogConfig = new MatDialogConfig();
 
-  addEmployee(): Subscription {
-    if(this.newEmp.name && this.newEmp.job && this.newEmp.email) {
-      return this.employeesService.addEmployee(this.newEmp)
-        .subscribe(
-          () => {
-            this.newEmp = new Employee();
-          },
-          () => true,
-          () => this.toastr.success('Employee added', '',{timeOut: 2000})
-        );
-    }
+    dialogOptions.data = { type: 'add' }
+    this.dialog.open(EmployeeFormComponent, dialogOptions);
   }
 }

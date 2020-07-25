@@ -1,16 +1,14 @@
-<h3 mat-dialog-title *ngIf="typeFormAdd; else typeFormEdit">Add Employee</h3>
-<ng-template  #typeFormEdit>
+<h3 mat-dialog-title *ngIf="addEmployee; else editBlockTitle">Add Employee</h3>
+<ng-template #editBlockTitle>
   <h3 mat-dialog-title>Edit Employee</h3>
-
-
 </ng-template>
 
 <form mat-dialog-content>
   <section>
     <mat-form-field appearance="legacy">
-      <input *ngIf="!typeFormAdd; else addNameInput" matInput type="text" name="name" placeholder="name" required>
-      <ng-template  #addNameInput>
-        <input  matInput type="text" name="name" placeholder="name" required>
+      <input [(ngModel)]="this.employee.name" *ngIf="addEmployee; else editName" matInput type="text" name="name" placeholder="name" required>
+      <ng-template #editName>
+        <input [(ngModel)]="this.employee.name" matInput type="text" name="name" placeholder="name" required>
       </ng-template>
     </mat-form-field>
   </section>
@@ -18,23 +16,26 @@
   <section>
     <mat-form-field>
       <mat-label>Select job</mat-label>
-      <select matNativeControl name="job" required>
-        <option *ngFor="let job of jobs" value="{{ job }}">{{ job }}</option>
+      <select [(ngModel)]="this.employee.job" matNativeControl name="job" required>
+        <option  *ngFor="let job of jobs" value="{{ job }}">{{ job }}</option>
       </select>
     </mat-form-field>
   </section>
 
   <section>
     <mat-form-field appearance="legacy">
-      <input *ngIf="!typeFormAdd; else addEmailInput" matInput type="email" name="email" placeholder="email" required>
-      <ng-template #addEmailInput>
-        <input  matInput type="email" name="email" placeholder="email" required>
+      <input [(ngModel)]="this.employee.email" *ngIf="addEmployee; else editEmail" matInput type="email" name="email" placeholder="email" required>
+      <ng-template #editEmail>
+        <input [(ngModel)]="this.employee.email" matInput type="email" name="email" placeholder="email" required>
       </ng-template>
     </mat-form-field>
   </section>
 </form>
 
 <div mat-dialog-actions align="end">
-  <button mat-flat-button>Add</button>
+  <button mat-flat-button (click)="newEmployee()" *ngIf="addEmployee; else editButton" mat-dialog-close>Add</button>
+  <ng-template #editButton>
+    <button mat-flat-button (click)="editEmployee()" mat-dialog-close>Edit</button>
+  </ng-template>
   <button mat-button mat-dialog-close>Cancel</button>
 </div>

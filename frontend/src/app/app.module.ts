@@ -28,6 +28,9 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmployeesTableComponent } from './components/employees-table/employees-table.component';
 
+//services
+import { EmployeesService } from './services/employees.service';
+import { Employee } from './models/employee';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,7 @@ import { EmployeesTableComponent } from './components/employees-table/employees-
     MatProgressBarModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [EmployeesService, ToastrModule, Employee],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
