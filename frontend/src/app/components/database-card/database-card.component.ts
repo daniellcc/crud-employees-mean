@@ -9,10 +9,11 @@ import { EmployeeFormComponent } from 'src/app/shared/components/employee-form/e
   styleUrls: ['./database-card.component.css']
 })
 export class DatabaseCardComponent implements OnInit {
+  query: string;
 
   constructor(private dialog: MatDialog) { }
               
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   openAdd() {

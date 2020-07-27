@@ -12,16 +12,16 @@
 
 		<mat-toolbar-row>
 			<mat-form-field appearance="legacy" class="search-form">
-				<input  matInput placeholder="search employee">
+				<input  [(ngModel)]="query" name="query" matInput placeholder="search employee">
+				<button mat-icon-button>
+					<mat-icon>search</mat-icon>
+				</button>
 			</mat-form-field>
-			<button mat-icon-button>
-				<mat-icon>search</mat-icon>
-			</button>
 		</mat-toolbar-row>
 		
 	</mat-toolbar>
 </nav>
 
-<app-employees-table></app-employees-table>
+<app-employees-table [searched]="query"></app-employees-table>
 
 <router-outlet></router-outlet>
