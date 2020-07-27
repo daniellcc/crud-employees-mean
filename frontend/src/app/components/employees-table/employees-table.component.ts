@@ -6,6 +6,8 @@ import { Employee } from 'src/app/models/employee';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-employees-table',
   templateUrl: './employees-table.component.html',
@@ -13,15 +15,16 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class EmployeesTableComponent implements OnInit, OnChanges, OnDestroy {
   employees: Employee[];
-  list: Employee[];
+  private auxiliarList: Employee[];
 
   @Input() searched: Observable<any>;
 
-  columnsToDisplay = ['name', 'job', 'link'];
+  readonly columnsToDisplay = ['name', 'job', 'link'];
 
   private readonly onDestroy = new Subject<void>();
 
-  constructor(private employeesService: EmployeesService) { }
+  constructor(private employeesService: EmployeesService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getEmployees();
@@ -42,13 +45,13 @@ export class EmployeesTableComponent implements OnInit, OnChanges, OnDestroy {
       .subscribe(
         (data) => {
           this.employees = data as Employee[];
-          this.list = data as Employee[];
+          this.auxiliarList = data as Employee[];
         },
-        (err: Error) => console.log(err)
+        (err: Error) => this.toastr.error(err.message, 'Error displaying list', {timeOut: 5000})
       );
   }
 
   filterEmployee(text: string): void {
-    this.employees = this.list.filter(emp => emp.name.includes(text.toLowerCase()));
+    this.employees = this.auxiliarList.filter(emp => emp.name.includes(text.toLowerCase()));
   }
 }
