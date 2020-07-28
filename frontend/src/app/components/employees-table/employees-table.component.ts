@@ -1,19 +1,20 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
 import { EmployeesService } from '../../services/employees.service';
 import { Employee } from 'src/app/models/employee';
 
-import { Subject, Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
+
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-employees-table',
   templateUrl: './employees-table.component.html',
   styleUrls: ['./employees-table.component.css']
 })
-export class EmployeesTableComponent implements OnInit, OnChanges, OnDestroy {
+export class EmployeesTableComponent implements OnInit, OnChanges {
   employees: Employee[];
   private auxiliarList: Employee[];
 
@@ -21,10 +22,11 @@ export class EmployeesTableComponent implements OnInit, OnChanges, OnDestroy {
 
   readonly columnsToDisplay = ['name', 'job', 'link'];
 
-  private readonly onDestroy = new Subject<void>();
+  private subs: SubSink = new SubSink();
 
   constructor(private employeesService: EmployeesService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService) { 
+  }
 
   ngOnInit() {
     this.getEmployees();
@@ -36,19 +38,18 @@ export class EmployeesTableComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.onDestroy.next();
+    this.subs.unsubscribe();
   }
 
   getEmployees(): void {
-    this.employeesService.getEmployees()
-      .pipe(takeUntil(this.onDestroy))
-      .subscribe(
-        (data) => {
-          this.employees = data as Employee[];
-          this.auxiliarList = data as Employee[];
-        },
-        (err: Error) => this.toastr.error(err.message, 'Error displaying list', {timeOut: 5000})
-      );
+    const getEmps = this.employeesService.getEmployees();
+    this.subs.add(getEmps.subscribe(
+      (data) => {
+        this.employees = data as Employee[];
+        this.auxiliarList = data as Employee[];
+      },
+      (err: Error) => this.toastr.error(err.message, 'Error displaying list', {timeOut: 5000})
+    ));
   }
 
   filterEmployee(text: string): void {

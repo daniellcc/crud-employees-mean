@@ -11,7 +11,8 @@ import { EmployeeFormComponent } from 'src/app/shared/components/employee-form/e
 export class DatabaseCardComponent implements OnInit {
   query: string;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+    ) { }
               
   ngOnInit() {
   }
