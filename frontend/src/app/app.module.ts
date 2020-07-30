@@ -32,6 +32,8 @@ import { EmployeesTableComponent } from './components/employees-table/employees-
 //services
 import { EmployeesService } from './services/employees.service';
 import { Employee } from './models/employee';
+import { HomeComponent } from './components/home/home.component';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { Employee } from './models/employee';
     DatabaseCardComponent,
     EmployeeComponent,
     NotFoundComponent,
-    EmployeesTableComponent
+    EmployeesTableComponent,
+    HomeComponent,
+    AuthFormComponent
   ],
   imports: [
     SharedModule,

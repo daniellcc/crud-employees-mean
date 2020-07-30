@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class EmployeesService {
-  protected URL: string = 'http://localhost:8000/employees';
+  protected readonly URL: string = 'http://localhost:8000/dashboard';
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 

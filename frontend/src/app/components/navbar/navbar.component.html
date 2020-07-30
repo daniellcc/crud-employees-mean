@@ -1,12 +1,26 @@
 <nav>
   <mat-toolbar>
     <h1>
-      <a routerLink='/employees' color="primary">DB Employees</a>
+      <a routerLink='/' color="primary">DB Employees</a>
     </h1>
 
-    <button mat-button (click)="openAbout()">
-      About
-    </button>
+    <ul>
+      <li>
+        <a mat-button routerLink='/login'>Login</a>
+      </li>
+      <li>
+        <a mat-button routerLink='/register'>Register</a>
+      </li>
+      <li>
+        <button mat-button (click)="openAbout()">
+          About
+        </button>
+      </li>
+      
+
+    </ul>
+
+ 
     
   </mat-toolbar>
 </nav>

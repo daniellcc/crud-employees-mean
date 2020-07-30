@@ -1,0 +1,35 @@
+<section *ngIf="registerUrl; else loginForm">
+  <form class="register-form">
+    <h2>Register</h2>
+    <mat-form-field appearance="legacy">
+      <input [(ngModel)]="this.user.company" matInput type="text" placeholder="company name" name="company" required>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input [(ngModel)]="user.email" matInput type="email" placeholder="email" name="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input [(ngModel)]="user.password" matInput type="password" placeholder="password" name="password" required>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit" (click)="createAccount()">Register</button>
+  </form>
+</section>
+
+<ng-template #loginForm>
+  <section>
+    <form class="login-form">
+      <h2>Login</h2>
+      <mat-form-field appearance="legacy">
+        <input [(ngModel)]="this.user.email" matInput type="text" placeholder="email" required>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <input [(ngModel)]="this.user.password" matInput type="password" placeholder="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="loginAccount()">
+        Login
+      </button>
+    </form>
+    <a mat-flat-button routerLink='/register'>Yet dont have an account?</a>
+  </section>
+</ng-template>
+
+
