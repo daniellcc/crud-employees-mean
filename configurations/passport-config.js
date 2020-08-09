@@ -6,11 +6,13 @@ const localStrategy = require('passport-local').Strategy;
 function serialization() {
   try {
     passport.serializeUser(
-      (user, done) => done(null, user._id)
+      (user, done) => {
+        done(null, user.id)
+      }
     );
     
     passport.deserializeUser((id, done) => {
-      user.findById({ _id: id }, (err, result) => {
+      user.findById(id, (err, result) => {
         err ? done(err) : done(null, result);
       });
     });
@@ -24,21 +26,21 @@ function strategy() {
   passport.use(new localStrategy(
     { usernameField: 'email' },
     (email, password, done) => {
-      user.findOne({ email: email  }, async (err, result) => {
-        console.log(result)
+      user.findOne({ email: email  }, (err, result) => {
         if(err) { return done(err); }
 
         if(!user) { 
           return done(null, false);
         }
         else {
-          await bcrypt.compare(password, res.password, (err, isEqual) => {
+          bcrypt.compare(password, result.password, (err, isEqual) => {
             if(err) {
               return done(err, false);
             }
+
             !isEqual
               ? done(null, false)
-              : done(null, result)
+              : done(null, result);
           });
         }
       });

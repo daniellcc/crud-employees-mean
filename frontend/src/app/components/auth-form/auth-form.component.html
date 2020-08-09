@@ -19,10 +19,10 @@
     <form class="login-form">
       <h2>Login</h2>
       <mat-form-field appearance="legacy">
-        <input [(ngModel)]="this.user.email" matInput type="text" placeholder="email" required>
+        <input [(ngModel)]="this.user.email" matInput type="text" placeholder="email" name="email" required>
       </mat-form-field>
       <mat-form-field appearance="legacy">
-        <input [(ngModel)]="this.user.password" matInput type="password" placeholder="password">
+        <input [(ngModel)]="this.user.password" matInput type="password" placeholder="password" name="password" required>
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit" (click)="loginAccount()">
         Login

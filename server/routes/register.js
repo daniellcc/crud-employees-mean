@@ -11,9 +11,10 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     })
-    .then(() => res.json('created'))
-    .catch(error => console.log(error));
+    .then(() => res.status(200).send({ success: 'created' }))
+    .catch(err => console.log(err));
   }
+  else res.status(406).send({ error:'sorry buddy, we need everything' });
 });
 
 module.exports = router;

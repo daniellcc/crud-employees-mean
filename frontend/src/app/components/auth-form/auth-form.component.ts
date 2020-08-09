@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 import { SubSink } from 'subsink';
@@ -28,10 +28,13 @@ export class AuthFormComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private authService: AuthService,
-              private toastr: ToastrService,
-              private activatedRoute: ActivatedRoute) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.registerOrLogin();
+  }
+
+  ngOnChanges(): void {
     this.registerOrLogin();
   }
 
@@ -42,17 +45,19 @@ export class AuthFormComponent implements OnInit, OnDestroy {
   registerOrLogin(): void {
     const url = this.router.url;
 
-    url.includes('register')
+    url.includes('register') 
       ? this.registerUrl = true
       : this.registerUrl = false;
+    
+
   }
 
   createAccount(): void {
     const createAccService = this.authService.createAccount(this.user);
     this.subs.add(createAccService.subscribe(
-      () => true,
-      (err: Error) => this.toastr.error('Try later, now we cant create your account', 'Error'),
-      () => this.registerUrl = false
+      (res) => console.log(res),
+      (err: Error) => console.log(err),
+      () => this.router.navigate(['/login'])
     ));
   }
 
@@ -60,8 +65,8 @@ export class AuthFormComponent implements OnInit, OnDestroy {
     const loginAccService = this.authService.loginAccount(this.user);
 
     this.subs.add(loginAccService.subscribe(
-      () => true,
-      (err: Error) => this.toastr.error('Try later, now we cant log in your account', 'Error'),
+      (res) => console.log(res),
+      (err: Error) => { throw err },
       () => this.router.navigate(['/dashboard'])
     ));
   }

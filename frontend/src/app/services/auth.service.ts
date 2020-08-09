@@ -27,10 +27,9 @@ export class AuthService {
     try {
       return this.http.post(this.URL + '/login', user);
     }
-    catch {
-      this.toastr.error('Try later, now we cant get employees', 'Error');
+    catch(error) {
+      throw error
     }
   }
-            
 }
 
